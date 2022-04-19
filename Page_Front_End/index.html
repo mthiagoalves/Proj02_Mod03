@@ -4,32 +4,74 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digivice</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
+    <title>Fender Guitar</title>
     <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
     <header>
-      <div class="container">
-        <div class="nav">
-          <h1><img src="/assets/img/logo.png" alt="" />Digivice</h1>
+      <h1>
+        <a href="/"><img src="/assets/img/logo.png" alt="" /></a>
+      </h1>
 
-          <div class="search-box">
-            <input type="text" id="input" placeholder="Search for Digi Id" /><i
-              class="fas fa-search"
-              onclick="loadImg()"
-            ></i>
-          </div>
+      <div class="header-container">
+        <p>Select your guitar for ID</p>
+        <div class="select-guitar">
+          <input type="number" id="id-guitar" placeholder="ID" />
+          <button onclick="findByIdGuitars()">
+            <img src="/assets/img/lupa.png" alt="lupa" />
+          </button>
         </div>
       </div>
     </header>
 
-    <div class="container">
-        <div class="grid"></div>
-    </div>
+    <section class="btn-modal-create">
+      <a href="#" class="btn" onclick="popupToggle()">Register Guitar</a>
+    </section>
+
+    <section id="popup">
+      <div class="content">
+        <h2 id="modal-tittle">Register a new guitar!</h2>
+
+        <div class="content-input">
+          <form>
+            <input type="hidden" name="id" id="id" />
+            <input type="text" name="name" id="name" placeholder="name" />
+            <input type="text" name="model" id="model" placeholder="model" />
+            <input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="description"
+            />
+            <input type="number" name="price" id="price" placeholder="price" />
+            <input type="text" name="img" id="img" placeholder="image" />
+            <button class="btn-1" onclick="createGuitar()">Register</button>
+          </form>
+        </div>
+      </div>
+      <a class="close" onclick="popupToggle()"
+        ><img src="/assets/img/close.png" alt="close"
+      /></a>
+    </section>
+
+    <section id="popup-delete">
+      <div class="content">
+        <h2 id="modal-tittle-delete">Are you sure?</h2>
+        <div class="btn">
+          <a type="button" class="btn-yes btns">Yes!</a>
+          <a type="button" class="btn-no btns" onclick="openModalDel()">Not.</a>
+        </div>
+
+        <div class="content-input"></div>
+      </div>
+      <a class="close" onclick="openModalDel()"
+        ><img src="/assets/img/close.png" alt="close"
+      /></a>
+    </section>
+
+    <div class="selected-guitar"></div>
+
+    <div class="container" id="container"></div>
 
     <script src="./assets/script.js"></script>
   </body>
