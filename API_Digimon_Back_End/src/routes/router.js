@@ -1,11 +1,11 @@
-const router = require('express').Router();
+const route = require('express').Router();
 
-const digiController = require('../controllers/controller');
+const controllerGuitar = require('../controller/controller');
 
-router.get('/find-digimons', digiController.findAllDigimonsController);
-router.get('/digimon/', digiController.findDigiIdControler);
-router.post('/digi-create', digiController.digiCreateController);
-router.put('/digi-update/:id', digiController.digiUpdateController);
-router.delete('/delete/:id', digiController.degiDeleteController);
+route.get('/find-guitar', controllerGuitar.findAllGuitarsController);
+route.get('/guitar/:id', controllerGuitar.findByIDGuitarController);
+route.post('/create', controllerGuitar.createGuitarControler);
+route.put('/update/:id', controllerGuitar.updateGuitarControler);
+route.delete('/delete/:id', controllerGuitar.deleteGuitarControler);
 
-module.exports = router;
+module.exports = route;

@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const router = require('./src/routes/router');
+const route = require('./src/routes/route');
 
-const port = 5005;
+const port = 3000;
 
 app.use(express.json());
 app.use(cors());
-app.use('/digimons', router);
+app.use('/guitars', route);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta http://localhost:${port}`);

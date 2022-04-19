@@ -10,11 +10,9 @@
 body {
   width: 100%;
   overflow: auto;
-  background: #fff;
+  background: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
 }
 
 header {
@@ -27,11 +25,11 @@ header {
 
 header .header-container{
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  justify-content: space-between;
 }
 
-header h1 a img{
+header a img h1{
   width: 180px;
   padding: 5px 5px 0 5px;
 }
@@ -51,6 +49,7 @@ header .header-container input{
   position: relative;
   width: 100%;
   display: flex;
+  
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -65,13 +64,12 @@ header .header-container input{
   margin: 30px 10px;
   padding: 20px 15px;
   display: flex;
+  background: #ccc;
   flex-direction: column;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   transition: 0.3s;
 }
-.container .card:hover {
-  height: 700px;
-}
+
 
 .container .card .img-card {
   position: relative;
@@ -98,18 +96,8 @@ header .header-container input{
   
 }
 
-.container .card:hover .content {
-  visibility: visible;
-  opacity: 1;
-  margin-top: -120px;
-  transition-delay: 0.3s;
-}
 
-.container .card:hover .img-card {
-  transform: rotate(45deg);
-  transition: 0.5s ease-in-out;
-  top: -50px;
-}
+
 
 .container .card .content h2 {
   padding-bottom: 0.8rem;
@@ -161,11 +149,7 @@ header .header-container input{
     transition: 0.5s ease-in-out;
     top: -50px;
   }
-  .container .card:hover .img-card {
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out;
-    top: -80px;
-  }
+
   
 }
 

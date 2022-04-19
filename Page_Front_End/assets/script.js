@@ -1,7 +1,7 @@
-const baseURL = "http://localhost:3000/guitars";
+const baseURL = "http://localhost:3000/digimons";
 
-async function findAllGuitars() {
-  const response = await fetch(`${baseURL}/find-guitar`);
+async function findAllDigimons() {
+  const response = await fetch(`${baseURL}/find-digimons`);
 
   const guitars = await response.json();
 
@@ -29,10 +29,10 @@ async function findAllGuitars() {
   });
 }
 
-async function findByIdGuitars() {
+async function findDigiId() {
   const id = document.querySelector("#id-guitar").value;
 
-  const response = await fetch(`${baseURL}/guitar/${id}`);
+  const response = await fetch(`${baseURL}/digimon/${id}`);
 
   const guitar = await response.json();
 
@@ -57,14 +57,14 @@ async function findByIdGuitars() {
   `;
 }
 
-findAllGuitars();
+findAllDigimons();
 
 async function popupToggle(id = null) {
   if (id != null) {
     document.querySelector("#modal-tittle").innerText = "Edit a New Guitar!";
     document.querySelector(".btn-1").innerText = "Done!";
 
-    const response = await fetch(`${baseURL}/guitar/${id}`);
+    const response = await fetch(`${baseURL}/digimon/${id}`);
     const guitars = await response.json();
 
     document.querySelector("#name").value = guitars.name;
@@ -89,7 +89,7 @@ async function popupToggle(id = null) {
   popup.classList.toggle("active");
 }
 
-async function createGuitar() {
+async function digiCreate() {
   const id = document.querySelector("#id").value;
   const name = document.querySelector("#name").value;
   const model = document.querySelector("#model").value;
@@ -155,7 +155,7 @@ function openModalDel(id) {
   });
 }
 
-async function delGuitar(id) {
+async function degiDelete(id) {
   const response = await fetch(`${baseURL}/delete/${id}`, {
     method: "delete",
     headers: {
@@ -172,17 +172,17 @@ async function delGuitar(id) {
   findAllGuitars();
 }
 
-window.addEventListener("load", dayNightMode);
+// window.addEventListener("load", dayNightMode);
 
-function dayNightMode() {
-  const date = new Date();
-  const hour = date.getHours();
+// function dayNightMode() {
+//   const date = new Date();
+//   const hour = date.getHours();
 
-  if (hour >= 7 && hour <= 19) {
-    document.body.style.backgroundColor = "whitesmoke";
-    document.body.style.color = "black";
-  } else {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-  }
-}
+//   if (hour >= 7 && hour <= 19) {
+//     document.body.style.backgroundColor = "whitesmoke";
+//     document.body.style.color = "black";
+//   } else {
+//     document.body.style.backgroundColor = "black";
+//     document.body.style.color = "white";
+//   }
+// }

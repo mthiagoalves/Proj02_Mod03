@@ -1,82 +1,90 @@
-const digiServices = require('../services/services');
+const guitarsService = require('../services/services');
 
-const findAllDigimonsController = (req, res) => {
-  const digimons = digiServices.findDigiServices();
+const findAllGuitarsController = (req, res) => {
+   const guitars = guitarsService.findGuitarsService();
 
-  if (digimons.length == 0) {
-    return res.status(404).send({ message: 'Not found more Digimons' });
-  }
+   if (guitars.length == 0) {
+      return res.status(404).send({ message: 'Not found more guitars' });
+   }
 
-  res.send(digimons);
+   res.send(guitars);
 };
 
-const findDigiIdControler = (req, res) => {
-  const digiId = Number(req.params.id);
+const findByIDGuitarController = (req, res) => {
+   const idGuitar = Number(req.params.id);
 
-  if (!digiId) {
-    return res.status(400).send({ message: 'digiId invalid' });
-  }
+   if (!idGuitar) {
+      return res.status(400).send({ message: 'Id invalid' });
+   }
 
-  const chosenDigimon = digiServices.findDigiIdServices();
+   const chosenGuitar = guitarsService.findByIDGuitarService(idGuitar);
 
-  if (!chosenDigimon) {
-    return res.status(404).send({ message: 'digiId not found' });
-  }
+   if (!chosenGuitar) {
+      return res.status(404).send({ message: 'Id not found' });
+   }
 
-  res.send(chosenDigimon);
+   res.send(chosenGuitar);
 };
 
-const digiCreateController = (req, res) => {
-  const digimon = req.doby;
+const createGuitarControler = (req, res) => {
+   const guitar = req.body;
 
-  if (!digimon || !digimon.name || !digimon.img || !digimon.level) {
-    return res.status(400).send({ message: 'Send all info the Digimon' });
-  }
-
-  const newDigimon = digiServices.digiCreateController(digimon);
-
-  res.status(201).send(newDigimon);
+   if (
+      !guitar ||
+      !guitar.name ||
+      !guitar.price ||
+      !guitar.img ||
+      !guitar.description
+   ) {
+      return res.status(400).send({ message: 'Send all info the guitar' });
+   }
+   const newGuitar = guitarsService.createGuitarControler(guitar);
+   res.status(201).send(newGuitar);
 };
 
-const digiUpdateController = (req, res) => {
-  const digiId = Number(req.params.id);
+const updateGuitarControler = (req, res) => {
+   const idGuitar = Number(req.params.id);
 
-  if (!digiId) {
-    return res.status(400).send({ message: 'Id invalid' });
-  }
+   if (!idGuitar) {
+      return res.status(400).send({ message: 'Id invalid' });
+   }
 
-  const editDigimon = req.body;
+   const guitarEdit = req.body;
 
-  if (
-    !editDigimon ||
-    !editDigimon.name ||
-    !editDigimon.img ||
-    !editDigimon.level
-  ) {
-    return res.status(400).send({ message: 'Send all info the Digimon' });
-  }
+   if (
+      !guitarEdit ||
+      !guitarEdit.name ||
+      !guitarEdit.price ||
+      !guitarEdit.img ||
+      !guitarEdit.description
+   ) {
+      return res.status(400).send({ message: 'Send all info the guitar' });
+   }
 
-  const digiUpdate = digiServices.digiUpdateController(digiId, editDigimon);
+   const updateGuitar = guitarsService.updateGuitarControler(
+      idGuitar,
+      guitarEdit,
+   );
 
-  res.send(digiUpdate);
+   res.send(updateGuitar);
 };
 
-const degiDeleteController = (req, res) => {
-  const digiId = Number(req.params.id);
+const deleteGuitarControler = (req, res) => {
+   const idGuitar = Number(req.params.id);
 
-  if (!digiId) {
-    return res.status(400).send({ message: 'Id invalid' });
-  }
+   if (!idGuitar) {
+      return res.status(400).send({ message: 'Id invalid' });
+   }
 
-  digiServices.digiUpdateController(digiId);
+   guitarsService.deleteGuitarControler(idGuitar);
 
-  res.send({ message: 'Digimon Deleted' });
+   res.send({ message: 'Guitar Deleted' });
 };
 
 module.exports = {
-  findAllDigimonsController,
-  findDigiIdControler,
-  digiCreateController,
-  digiUpdateController,
-  degiDeleteController,
+   findAllGuitarsController,
+   findByIDGuitarController,
+   createGuitarControler,
+   updateGuitarControler,
+   deleteGuitarControler,
 };
